@@ -9,6 +9,7 @@
 #include <stdio.h>      /* printf, scanf, puts, NULL */
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
+#include "link_list.h"
 
 #define TEST_NUM 100
 
@@ -17,13 +18,6 @@ void swap_int(int* a, int* b){
     *a = *b;
     *b = v;
 }
-
-
-typedef struct linklist{
-    int x;
-    struct linklist* next;
-} linklist;
-
 
 /* Insert to the first for item a
  * l: the pointer to the pointer of the first item
@@ -74,6 +68,8 @@ linklist* find_item(linklist* l, int a){
         }
         l = l->next;
     }while(l != NULL);
+    
+    return NULL;
 }
 
 /**
