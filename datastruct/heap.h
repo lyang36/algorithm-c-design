@@ -25,5 +25,5 @@ void del_heapi(heapi* hp);
 void bubble_down(heapi* hp, int n);
 
 /* Pop up the min element */
-void pop_min(heapi* hp);
+int pop_min(heapi* hp);
 #endif

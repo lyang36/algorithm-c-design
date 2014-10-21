@@ -13,7 +13,7 @@
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 
-#define TEST_NUM 1000
+#define TEST_NUM 30000
 
 /*find the min of a integer list, returns the argmin and min*/
 void findmin(int * list, int n_elements, int * argmin, int * vmin){

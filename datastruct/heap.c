@@ -49,27 +49,40 @@ void bubble_down(heapi* hp, int n){
         return;
     }
 
-    if((hp->p_array[n - 1] <= hp->hp->p_array[n * 2 - 1]) && 
-       (hp->p_array[n - 1] <= hp->hp->p_array[n * 2])){
+    if((hp->p_array[n - 1] <= hp->p_array[n * 2 - 1]) && 
+       (hp->p_array[n - 1] <= hp->p_array[n * 2])){
         return;
     }
     // bubble to both children
-    if(hp->p_array[n - 1] > hp->p_array[n * 2 - 1]){
-        swap_int(hp->p_array + n - 1, hp->p_array + n * 2 - 1);
-        bubble_down(hp, n * 2);
-        bubble_down(hp, n);
+    if(hp->p_array[n - 1] > hp->p_array[n * 2 - 1] && 
+       hp->p_array[n - 1] > hp->p_array[n * 2]){
+        if(hp->p_array[n * 2 - 1] <= hp->p_array[n * 2]){
+            swap_int(hp->p_array + n - 1, hp->p_array + n * 2 - 1);
+            bubble_down(hp, n * 2);
+        }else{
+            swap_int(hp->p_array + n - 1, hp->p_array + n * 2);
+            bubble_down(hp, n * 2 + 1);
+        }
+        // bubble_down(hp, n * 2);
+        // bubble_down(hp, n);
     }else{
-        swap_int(hp->p_array + n - 1, hp->p_array + n * 2); 
-        bubble_down(hp, n * 2 + 1);
-        bubble_down(hp, n);
+        if(hp->p_array[n - 1] > hp->p_array[n * 2 - 1]){
+            swap_int(hp->p_array + n - 1, hp->p_array + n * 2 - 1); 
+            bubble_down(hp, n * 2);
+        }else{
+            swap_int(hp->p_array + n - 1, hp->p_array + n * 2);
+            bubble_down(hp, n * 2 + 1);
+        }
+        //bubble_down(hp, n);
     }
 }
 
 
-void pop_min(heapi* hp){
+int pop_min(heapi* hp){
     int min = hp->p_array[0];
     hp->p_array[0] = hp->p_array[hp->n - 1]; 
     hp->n --;
     bubble_down(hp, 1);
+    return min;
 }
 
